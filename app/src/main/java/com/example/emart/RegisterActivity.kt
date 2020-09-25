@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
             val toast: Toast =
                 Toast.makeText(this, "Account Created Successfully", Toast.LENGTH_SHORT)
             toast.show()
-            finish()
+            super.onBackPressed()
         } else {
             val toast: Toast = Toast.makeText(this, "Account Creation Failed", Toast.LENGTH_LONG)
             toast.show()

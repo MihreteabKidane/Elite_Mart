@@ -16,7 +16,7 @@ import com.example.emart.entities.Product
 import com.example.emart.viewmodels.ProductViewModel
 
 
-class ElectronicsFragment : Fragment() {
+class ClothingsFragment : Fragment() {
 
 
     private lateinit var pViewModel: ProductViewModel
@@ -26,16 +26,17 @@ class ElectronicsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_electronics, container, false)
+        val view = inflater.inflate(R.layout.fragment_clothings, container, false)
         val shopRecycler = view!!.findViewById<RecyclerView>(R.id.shop_recycle)
 
         pViewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
         shopRecycler?.layoutManager = GridLayoutManager(activity, 2)
 
-        Toast.makeText(activity, "Fetching For Products", Toast.LENGTH_LONG).show()
         pViewModel.getAllProduct.observe(viewLifecycleOwner, Observer { products ->
             products.forEach {
-                if (it.catagory.equals("Electronics")) listOfProducts.add(it)
+                if (it.catagory.equals("Clothing")) {
+                    listOfProducts.add(it)
+                }
             }
         })
 
@@ -45,7 +46,7 @@ class ElectronicsFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = ElectronicsFragment().apply {
+        fun newInstance() = ClothingsFragment().apply {
             arguments = Bundle()
         }
     }

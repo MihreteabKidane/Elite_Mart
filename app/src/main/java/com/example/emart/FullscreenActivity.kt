@@ -98,8 +98,10 @@ class FullscreenActivity : AppCompatActivity() {
                 "Hyper-realistic graphics: NVIDIA(R) GeForce(R) RTX 2080 Super (8 GB GDDR6 dedicated memory). Enjoy new levels of gaming realism and speed"
             )
         )
+
     }
 
+    @SuppressLint("ShowToast")
     fun authentication(view: View) {
         val email = email.text.toString()
         val password = password.text.toString()
@@ -126,6 +128,7 @@ class FullscreenActivity : AppCompatActivity() {
                                 startActivity(intent)
                                 Toast.makeText(applicationContext, "Sign Up Successful!", Toast.LENGTH_LONG)
                             }
+                            else -> Toast.makeText(this, "Neither Selected", Toast.LENGTH_LONG)
                         }
                     }
                 }
